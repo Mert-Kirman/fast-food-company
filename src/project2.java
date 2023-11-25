@@ -7,10 +7,10 @@ import java.util.Scanner;
 public class project2 {
     public static void main(String[] args) throws IOException {
         // Create an output file to log information regarding requests
-        FileWriter output = new FileWriter("myLargeOutput5.txt", true);
+        FileWriter output = new FileWriter(args[2], true);
 
         // Open the file that contains information regarding initial state of the company
-        File file = new File("large_initial5.txt");
+        File file = new File(args[0]);
         Scanner input = new Scanner(file);
 
         // Main hash table that contains city objects
@@ -46,7 +46,7 @@ public class project2 {
         input.close();
 
         // Open the file that contains information about the changes happening in the company
-        file = new File("large5.txt");
+        file = new File(args[1]);
         input = new Scanner(file);
 
         // Process requests

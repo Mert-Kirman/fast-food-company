@@ -69,6 +69,8 @@ public class HashTable<V> {
             this.table[i] = new LinkedList<>();
         }
 
+        this.elementCount = 0;
+
         // Insert old values to the new hashtable
         for(LinkedList<V> list : previousTable) {
             for(V val : list) {
@@ -81,12 +83,14 @@ public class HashTable<V> {
 
     // Insert a value to the hash table
     public void insert(String name, V val) {
-        // If element count stored in the table is greater than the table size, rehash
-        if(this.elementCount >= this.table.length) {
-            rehash();
+        LinkedList<V> listToInsert = this.table[hash(name)];
+        if(!listToInsert.contains(val)) {
+            listToInsert.add(val);
+            this.elementCount++;
+            if(this.elementCount > this.table.length) {
+                rehash();
+            }
         }
-        this.table[hash(name)].add(val);
-        this.elementCount++;
     }
 
     // Remove a value from the table

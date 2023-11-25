@@ -55,7 +55,7 @@ public class Branch extends HasName {
             this.employees[1].remove(employee.name);  // No longer a cashier
             this.employees[2].insert(employee.name, employee);  // It is a cook from now on
             output.write(employee.name + " is promoted from Cashier to Cook.\n");
-            if(employee.promotionPoint >= 10) {
+            if(employee.promotionPoint >= 10 && !this.cookToManager.contains(employee)) {
                 this.cookToManager.offer(employee);
             }
         }
